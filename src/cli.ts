@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as commander from 'commander';
 import {existsSync, readFile, readFileSync, writeFile} from 'fs';
 import {join} from 'path';
