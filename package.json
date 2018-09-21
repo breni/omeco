@@ -36,5 +36,13 @@
     "omtti": "./lib/cli.js"
   },
   "main": "lib/cli.js",
-  "typings": "lib/cli.d.ts"
+  "typings": "lib/cli.d.ts",
+  "keywords": [
+    "OData",
+    "TypeScript",
+    "metadata",
+    "interface",
+    "converter",
+    "generator"
+  ]
 }
