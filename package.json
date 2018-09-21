@@ -2,10 +2,6 @@
   "name": "odata-metadata-to-typescript-interfaces",
   "version": "0.0.1",
   "description": "Tool to convert OData metadata to TypeScript interfaces",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces.git"
@@ -15,5 +11,30 @@
   "bugs": {
     "url": "https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/issues"
   },
-  "homepage": "https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces#readme"
+  "homepage": "https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces#readme",
+  "devDependencies": {
+    "tslint": "^5.11.0",
+    "typedoc": "^0.12.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/xml2js": "^0.4.3",
+    "commander": "^2.18.0",
+    "ts-node": "^7.0.1",
+    "xml2js": "^0.4.19"
+  },
+  "scripts": {
+    "build": "npm run tslint && npm run compile && npm run doc",
+    "compile": "tsc",
+    "doc": "typedoc --includeDeclarations --excludeExternals --mode modules --out lib/doc lib",
+    "prepareOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tslint": "tslint src/**/*.ts"
+  },
+  "bin": {
+    "stapps-api": "./lib/cli.js"
+  },
+  "main": "lib/cli.js",
+  "typings": "lib/cli.d.ts"
 }
