@@ -1,0 +1,19 @@
+{
+  "name": "odata-metadata-to-typescript-interfaces",
+  "version": "0.0.1",
+  "description": "Tool to convert OData metadata to TypeScript interfaces",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces.git"
+  },
+  "author": "Karl-Philipp Wulfert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/issues"
+  },
+  "homepage": "https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces#readme"
+}
