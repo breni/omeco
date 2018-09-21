@@ -1,0 +1,1 @@
+# odata-metadata-to-typescript-interfaces
