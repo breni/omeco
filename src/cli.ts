@@ -2,7 +2,7 @@
 
 import * as commander from 'commander';
 import {existsSync, readFile, readFileSync, writeFile} from 'fs';
-import {join} from 'path';
+import {basename, dirname, join} from 'path';
 import {promisify} from 'util';
 import {convertableToString, parseString} from 'xml2js';
 
@@ -45,18 +45,30 @@ function translateType(oDataType: string, nullable: boolean): string {
   let typeScriptType = '';
 
   switch (oDataType) {
-    case 'Edm.String':
     case 'Edm.Binary':
+    case 'Edm.Byte':
+    case 'Edm.DateTime':
+    case 'Edm.DateTimeOffset':
+    case 'Edm.Guid':
+    case 'Edm.String':
+    case 'Edm.Time':
       typeScriptType = 'string';
       break;
+    case 'Edm.Decimal':
+    case 'Edm.Double':
+    case 'Edm.Int16':
     case 'Edm.Int32':
+    case 'Edm.Int64':
+    case 'Edm.Sbyte':
+    case 'Edm.Single':
       typeScriptType = 'number';
-      break;
-    case 'Edm.DateTime':
-      typeScriptType = 'Date';
       break;
     case 'Edm.Boolean':
       typeScriptType = 'boolean';
+      break;
+    case 'Null':
+      typeScriptType = 'null';
+      nullable = false;
       break;
     default:
       throw new Error('No translation for ' + oDataType);
@@ -80,12 +92,17 @@ function generateName(namespace: string, name: string): string {
 }
 
 commander
-  .command('convert <metadataXml> <interfacesDTs>')
+  .command('convert <metadataXml> [interfacesDTs]')
   .version(pkgJson.version)
   .description('Convert OData metadata to TypeScript interfaces')
-  .action(async (metadataXml, interfacesDTs) => {
+  .option('-d, --debug', 'Write JSON representation of XML to file')
+  .action(async (metadataXml, interfacesDTs, cmd) => {
     if (!existsSync(metadataXml)) {
       throw new Error('File `' + metadataXml + '` does not exist!');
+    }
+
+    if (typeof interfacesDTs === 'undefined') {
+      interfacesDTs = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.d.ts');
     }
 
     if (existsSync(interfacesDTs)) {
@@ -96,10 +113,21 @@ commander
 
     const metadata = await asyncParseString(buffer);
 
+    if (cmd.debug) {
+      await asyncWriteFile(join(
+        dirname(metadataXml),
+        basename(metadataXml, '.xml') + '.json',
+      ), JSON.stringify(metadata, null, 2));
+    }
+
     const typeScriptInterfaces: any[] = [];
 
     metadata['edmx:Edmx']['edmx:DataServices'].forEach((dataService: any) => {
       dataService.Schema.forEach((schema: any) => {
+        if (!Array.isArray(schema.EntityType)) {
+          return;
+        }
+
         schema.EntityType.forEach((entityType: any) => {
           const typeScriptInterface: any = {
             name: entityType.$.Name,
@@ -118,7 +146,16 @@ commander
         });
 
         schema.Association.forEach((association: any) => {
-          const principalRole = association.ReferentialConstraint[0].Principal[0].$.Role;
+          if (!Array.isArray(association.ReferentialConstraint)) {
+            return;
+            // TODO: associations with equal nodes
+          }
+
+          const principalRole = association
+            .ReferentialConstraint[0]
+            .Principal[0]
+            .$
+            .Role;
           const dependentRole = association.ReferentialConstraint[0].Dependent[0].$.Role;
 
           let principal: any = {};
