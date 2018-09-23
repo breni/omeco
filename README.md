@@ -1,18 +1,25 @@
 # odata-metadata-to-typescript-interfaces
 
-This tool can generate a TypeScript definition file containing interfaces that describe data which is parsed from a supplied `metadata.xml` file.
+This tool can generate a TypeScript definition file containing interfaces that describe data which is parsed from a supplied metadata file.
 
-## Globally
+## Installed globally
 
 ```
 npm install -g odata-metadata-to-typescript-interfaces
 
+omtti convert PATH/TO/METADATA.XML
+```
+
+This will generate a file called `metadata.d.ts` in the same directory as the supplied metadata file.
+
+For further usage refer to the help section of the CLI:
+
+```
 omtti --help
-odata-metadata-to-typescript-interfaces --help
 ```
 
-## Cloned 
+## Programatically
 
-```
-node --require ts-node/register src/cli.ts --help
-```
+Use the functions `generateTypeScriptInterfaces` and `compileTypeScriptInterfaces`.
+
+See `lib/doc` for documentation.

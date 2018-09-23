@@ -35,8 +35,8 @@
     "odata-metadata-to-typescript-interfaces": "./lib/cli.js",
     "omtti": "./lib/cli.js"
   },
-  "main": "lib/cli.js",
-  "typings": "lib/cli.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "keywords": [
     "OData",
     "TypeScript",

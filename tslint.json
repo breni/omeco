@@ -3,6 +3,7 @@
     "tslint:recommended"
   ],
   "rules": {
+    "interface-name": false,
     "no-console": false,
     "quotemark": [
       true,
