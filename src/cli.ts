@@ -114,6 +114,12 @@ commander
 
     const metadata = await asyncParseString(buffer);
 
+    const version = metadata['edmx:Edmx'].$.Version;
+
+    if (version !== '1.0') {
+      throw new Error('Metadata version `' + version + '` not supported.');
+    }
+
     if (cmd.debug) {
       await asyncWriteFile(join(
         dirname(metadataXml),
