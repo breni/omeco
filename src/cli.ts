@@ -96,6 +96,7 @@ commander
   .version(pkgJson.version)
   .description('Convert OData metadata to TypeScript interfaces')
   .option('-d, --debug', 'Write JSON representation of XML to file')
+  .option('-f, --force', 'Overwrite existing TypeScript definition file')
   .action(async (metadataXml, interfacesDTs, cmd) => {
     if (!existsSync(metadataXml)) {
       throw new Error('File `' + metadataXml + '` does not exist!');
@@ -105,7 +106,7 @@ commander
       interfacesDTs = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.d.ts');
     }
 
-    if (existsSync(interfacesDTs)) {
+    if (existsSync(interfacesDTs) && !cmd.force) {
       throw new Error('File `' + interfacesDTs + '` does exist!');
     }
 
