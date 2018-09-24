@@ -25,11 +25,12 @@
   },
   "scripts": {
     "build": "npm run tslint && npm run compile && npm run doc",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "compile": "tsc",
     "doc": "typedoc --includeDeclarations --excludeExternals --mode modules --out ./docs ./src && touch ./docs/.nojekyll",
     "prepareOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tslint": "tslint *.ts"
+    "tslint": "tslint './src/**/*.ts'"
   },
   "bin": {
     "odata-metadata-to-typescript-interfaces": "./dist/cli.js",
