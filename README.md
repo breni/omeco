@@ -22,4 +22,4 @@ omtti --help
 
 Use the functions `generateTypeScriptInterfaces` and `compileTypeScriptInterfaces`.
 
-See `lib/doc` for documentation.
+See `docs` for documentation.

@@ -64,4 +64,5 @@ typings/
 .idea
 
 # built files
-lib
+dist
+docs

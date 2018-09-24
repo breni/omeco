@@ -3,7 +3,10 @@
 /*
 
 # Except this files/folders
+!dist/*
+!docs/*
+!src/*
+!LICENSE
 !package.json
 !package-lock.json
 !README.md
-!lib/*

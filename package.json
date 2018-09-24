@@ -26,17 +26,17 @@
   "scripts": {
     "build": "npm run tslint && npm run compile && npm run doc",
     "compile": "tsc",
-    "doc": "typedoc --includeDeclarations --excludeExternals --mode modules --out lib/doc lib",
+    "doc": "typedoc --includeDeclarations --excludeExternals --mode modules --out docs ./src",
     "prepareOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tslint": "tslint src/**/*.ts"
+    "tslint": "tslint *.ts"
   },
   "bin": {
-    "odata-metadata-to-typescript-interfaces": "./lib/cli.js",
-    "omtti": "./lib/cli.js"
+    "odata-metadata-to-typescript-interfaces": "./dist/cli.js",
+    "omtti": "./dist/cli.js"
   },
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "./dist/index.js",
+  "typings": "./index.d.ts",
   "keywords": [
     "OData",
     "TypeScript",
