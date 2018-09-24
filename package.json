@@ -1,6 +1,6 @@
 {
   "name": "odata-metadata-to-typescript-interfaces",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Tool to convert OData metadata to TypeScript interfaces",
   "repository": {
     "type": "git",
