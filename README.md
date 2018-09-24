@@ -22,4 +22,4 @@ omtti --help
 
 Use the functions `generateTypeScriptInterfaces` and `compileTypeScriptInterfaces`.
 
-See `docs` for documentation.
+[See documentation](https://krlwlfrt.github.io/odata-metadata-to-typescript-interfaces/) for description of usage.  
