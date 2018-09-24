@@ -26,7 +26,7 @@
   "scripts": {
     "build": "npm run tslint && npm run compile && npm run doc",
     "compile": "tsc",
-    "doc": "typedoc --includeDeclarations --excludeExternals --mode modules --out docs ./src",
+    "doc": "typedoc --includeDeclarations --excludeExternals --mode modules --out ./docs ./src && touch ./docs/.nojekyll",
     "prepareOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tslint": "tslint *.ts"
