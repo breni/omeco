@@ -1,5 +1,5 @@
 import {readFile, writeFile} from 'fs';
-import {promisify} from 'util';
+import {isString, promisify} from 'util';
 import {convertableToString, parseString} from 'xml2js';
 
 /**
@@ -15,6 +15,11 @@ export interface TypeScriptInterface {
    * Namespace of the interface
    */
   namespace: string;
+
+  /**
+   * Parent interface of the interface
+   */
+  parent?: string;
 
   /**
    * List of properties of the interface
@@ -45,6 +50,16 @@ export const asyncReadFile = promisify(readFile);
  * Async version of writeFile
  */
 export const asyncWriteFile = promisify(writeFile);
+
+/**
+ * Check that something is a string
+ *
+ * @param something Something to check
+ */
+
+/*export function isString(something: any): something is string {
+  return typeof something === 'string';
+}*/
 
 /**
  * Async version of parseString
@@ -128,7 +143,13 @@ export function compileTypeScriptInterfaces(typeScriptInterfaces: TypeScriptInte
   let output = '';
 
   typeScriptInterfaces.forEach((typeScriptInterface) => {
-    output += 'export interface ' + generateName(typeScriptInterface.namespace, typeScriptInterface.name) + ' {\n';
+    output += 'export interface ' + generateName(typeScriptInterface.namespace, typeScriptInterface.name);
+
+    if (typeof typeScriptInterface.parent === 'string') {
+      output += ' extends ' + generateName(typeScriptInterface.namespace, typeScriptInterface.parent);
+    }
+
+    output += ' {\n';
 
     typeScriptInterface.properties.forEach((property: any) => {
       output += '  ' + property.name + ': ' + property.type + ';\n';
@@ -177,12 +198,18 @@ export function generateTypeScriptInterfacesV2(metadata: any): TypeScriptInterfa
           properties: [],
         };
 
-        entityType.Property.forEach((property: any) => {
-          typeScriptInterface.properties.push({
-            name: property.$.Name,
-            type: translateType(property.$.Type, property.$.Nullable),
+        if (isString(entityType.$.BaseType)) {
+          typeScriptInterface.parent = entityType.$.BaseType.split('.')[1];
+        }
+
+        if (Array.isArray(entityType.Property)) {
+          entityType.Property.forEach((property: any) => {
+            typeScriptInterface.properties.push({
+              name: property.$.Name,
+              type: translateType(property.$.Type, property.$.Nullable),
+            });
           });
-        });
+        }
 
         typeScriptInterfaces.push(typeScriptInterface);
       });
