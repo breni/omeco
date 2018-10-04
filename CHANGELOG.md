@@ -1,5 +1,5 @@
-<a name="0.4.1"></a>
-## [0.4.1](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.3.0...v0.4.1) (2018-09-24)
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.3.0...v0.5.0) (2018-10-04)
 
 
 ### Bug Fixes
@@ -10,6 +10,7 @@
 ### Features
 
 * add script to generate changelog ([8803847](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/8803847))
+* support base types for entity types ([aab9c7d](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/aab9c7d))
 
 
 
