@@ -52,16 +52,6 @@ export const asyncReadFile = promisify(readFile);
 export const asyncWriteFile = promisify(writeFile);
 
 /**
- * Check that something is a string
- *
- * @param something Something to check
- */
-
-/*export function isString(something: any): something is string {
-  return typeof something === 'string';
-}*/
-
-/**
  * Async version of parseString
  *
  * @param xml XML to parse
@@ -140,7 +130,7 @@ export function generateName(namespace: string, name: string): string {
  * @param typeScriptInterfaces List of TypeScript interfaces to compile
  */
 export function compileTypeScriptInterfaces(typeScriptInterfaces: TypeScriptInterface[]): string {
-  let output = '';
+  let output = '/* tslint:disable */\n\n';
 
   typeScriptInterfaces.forEach((typeScriptInterface) => {
     output += 'export interface ' + generateName(typeScriptInterface.namespace, typeScriptInterface.name);
@@ -206,7 +196,8 @@ export function generateTypeScriptInterfacesV2(metadata: any): TypeScriptInterfa
           entityType.Property.forEach((property: any) => {
             typeScriptInterface.properties.push({
               name: property.$.Name,
-              type: translateType(property.$.Type, property.$.Nullable === 'true'),
+              // property `Nullable` defaults to true
+              type: translateType(property.$.Type, property.$.Nullable !== 'false'),
             });
           });
         }
