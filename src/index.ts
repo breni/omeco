@@ -206,7 +206,7 @@ export function generateTypeScriptInterfacesV2(metadata: any): TypeScriptInterfa
           entityType.Property.forEach((property: any) => {
             typeScriptInterface.properties.push({
               name: property.$.Name,
-              type: translateType(property.$.Type, property.$.Nullable),
+              type: translateType(property.$.Type, property.$.Nullable === 'true'),
             });
           });
         }
