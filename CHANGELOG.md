@@ -1,3 +1,13 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.5.1...v0.6.0) (2018-10-09)
+
+
+### Features
+
+* add comment to disable tslint ([6af8a27](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/6af8a27))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.5.0...v0.5.1) (2018-10-09)
 
