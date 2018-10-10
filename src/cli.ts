@@ -3,10 +3,8 @@
 import * as commander from 'commander';
 import {existsSync, readFileSync} from 'fs';
 import {basename, dirname, join} from 'path';
+import {asyncParseString, asyncReadFile, asyncWriteFile} from './async';
 import {
-  asyncParseString,
-  asyncReadFile,
-  asyncWriteFile,
   compileTypeScriptInterfaces,
   generateTypeScriptInterfaces,
 } from './index';
