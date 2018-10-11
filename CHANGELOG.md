@@ -1,3 +1,18 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.6.0...v0.7.0) (2018-10-11)
+
+
+### Bug Fixes
+
+* fix navigation properties ([a6e7c4d](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/a6e7c4d))
+
+
+### Features
+
+* add possibility to define deferred type ([5725f83](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/5725f83))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.5.1...v0.6.0) (2018-10-09)
 
