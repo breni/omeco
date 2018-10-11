@@ -1,27 +1,30 @@
 import {isString} from 'util';
+import {asyncParseString} from './async';
 import {generateName, translateProperty} from './helpers';
-import {TypeScriptInterface} from './types';
+import {DeferredType, TypeScriptInterface} from './types';
 
 /**
  * Compile representations of TypeScript interfaces to TypeScript code
  *
  * @param typeScriptInterfaces List of TypeScript interfaces to compile
+ * @param deferredType Type of deferred to use
  */
-export function compileTypeScriptInterfaces(typeScriptInterfaces: TypeScriptInterface[]): string {
+export function compileTypeScriptInterfaces(typeScriptInterfaces: TypeScriptInterface[],
+                                            deferredType?: DeferredType): string {
   let output = '/* tslint:disable */\n\n';
 
   typeScriptInterfaces.forEach((typeScriptInterface) => {
     output += 'export interface '
       + generateName(typeScriptInterface);
 
-    if (typeof typeScriptInterface.parent === 'string') {
-      output += ' extends ' + generateName(typeScriptInterface);
+    if (typeof typeScriptInterface.parent !== 'undefined') {
+      output += ' extends ' + generateName(typeScriptInterface.parent);
     }
 
     output += ' {\n';
 
     typeScriptInterface.properties.forEach((property: any) => {
-      output += '  ' + property.name + ': ' + translateProperty(property) + ';\n';
+      output += '  ' + property.name + ': ' + translateProperty(property, deferredType) + ';\n';
     });
 
     output += '}\n\n';
@@ -33,9 +36,11 @@ export function compileTypeScriptInterfaces(typeScriptInterfaces: TypeScriptInte
 /**
  * Generate TypeScript interfaces from OData metadata
  *
- * @param metadata Metadata to generate TypeScript interfaces from
+ * @param metadataString Metadata to generate TypeScript interfaces from
  */
-export function generateTypeScriptInterfaces(metadata: any): TypeScriptInterface[] {
+export async function extractData(metadataString: string): Promise<TypeScriptInterface[]> {
+  const metadata = await asyncParseString(metadataString);
+
   // get metadata version
   const version = metadata['edmx:Edmx'].$.Version;
 
@@ -43,7 +48,7 @@ export function generateTypeScriptInterfaces(metadata: any): TypeScriptInterface
     throw new Error('Metadata version `' + version + '` not supported.');
   }
 
-  return generateTypeScriptInterfacesV2(metadata);
+  return extractDataV2(metadata);
 }
 
 /**
@@ -51,7 +56,7 @@ export function generateTypeScriptInterfaces(metadata: any): TypeScriptInterface
  *
  * @param metadata Metadata to generate TypeScript interfaces from
  */
-export function generateTypeScriptInterfacesV2(metadata: any): TypeScriptInterface[] {
+export function extractDataV2(metadata: any): TypeScriptInterface[] {
   const typeScriptInterfaces: TypeScriptInterface[] = [];
 
   // iterate over data services
@@ -72,9 +77,16 @@ export function generateTypeScriptInterfacesV2(metadata: any): TypeScriptInterfa
           properties: [],
         };
 
+        // add interface to list of interfaces
+        typeScriptInterfaces.push(typeScriptInterface);
+
         // set parent for interface if entity type has base type
         if (isString(entityType.$.BaseType)) {
-          typeScriptInterface.parent = entityType.$.BaseType.split('.')[1];
+          typeScriptInterface.parent = {
+            name: entityType.$.BaseType.split('.')[1],
+            namespace: entityType.$.BaseType.split('.')[0],
+            properties: [],
+          };
         }
 
         if (Array.isArray(entityType.Property)) {
@@ -83,6 +95,7 @@ export function generateTypeScriptInterfacesV2(metadata: any): TypeScriptInterfa
             const type = property.$.Type.split('.');
 
             typeScriptInterface.properties.push({
+              multiplicity: '1',
               name: property.$.Name,
               namespace: type[0],
               nullable: property.$.Nullable !== 'false',
@@ -122,14 +135,13 @@ export function generateTypeScriptInterfacesV2(metadata: any): TypeScriptInterfa
           }
 
           typeScriptInterface.properties.push({
+            multiplicity: relevantEnd.$.Multiplicity,
             name: navigationProperty.$.Name,
             namespace: schema.$.Namespace,
             nullable: false,
             type: relevantEnd.$.Type.split('.')[1],
           });
         });
-
-        typeScriptInterfaces.push(typeScriptInterface);
       });
     });
   });

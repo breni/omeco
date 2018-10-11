@@ -1,11 +1,11 @@
-import {ThingWithNameAndNamespace, TypeScriptInterfaceProperty} from './types';
+import {DeferredType, ThingWithNameAndNamespace, TypeScriptInterfaceProperty} from './types';
 
 /**
  * Translate an OData type to a TypeScript type
  *
  * @param property Property to translate
  */
-export function translateProperty(property: TypeScriptInterfaceProperty): string {
+export function translateProperty(property: TypeScriptInterfaceProperty, deferredType?: DeferredType): string {
   let typeScriptType = '';
 
   if (property.namespace === 'Edm') {
@@ -43,6 +43,14 @@ export function translateProperty(property: TypeScriptInterfaceProperty): string
       name: property.type,
       namespace: property.namespace,
     });
+
+    if (['*', '0..n', '1..n'].indexOf(property.multiplicity) >= 0) {
+      typeScriptType += '[]';
+    }
+
+    if (typeof deferredType !== 'undefined') {
+      typeScriptType += ' | ' + deferredType + '<' + typeScriptType + '>';
+    }
   }
 
   if (property.nullable) {

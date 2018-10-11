@@ -4,10 +4,7 @@ import * as commander from 'commander';
 import {existsSync, readFileSync} from 'fs';
 import {basename, dirname, join} from 'path';
 import {asyncParseString, asyncReadFile, asyncWriteFile} from './async';
-import {
-  compileTypeScriptInterfaces,
-  generateTypeScriptInterfaces,
-} from './index';
+import {compileTypeScriptInterfaces, extractData} from './index';
 
 // read and parse package file
 const pkgJson = JSON.parse(readFileSync(join(__dirname, '..', 'package.json')).toString());
@@ -18,6 +15,7 @@ commander
   .description('Convert OData metadata to TypeScript interfaces')
   .option('-d, --debug', 'Write JSON representation of XML to file')
   .option('-f, --force', 'Overwrite existing TypeScript definition file')
+  .option('-l, --deferred [type]', 'Type of deferred to use')
   .action(async (metadataXml, interfacesDTs, cmd) => {
     // check if supplied metadata file exists
     if (!existsSync(metadataXml)) {
@@ -37,19 +35,25 @@ commander
     // read metadata file
     const buffer = await asyncReadFile(metadataXml);
 
-    // parse metadata file
-    const metadata = await asyncParseString(buffer);
-
     // write JSON representation of metadata if debug option is set
     if (cmd.debug) {
+      // parse metadata file
+      const metadata = await asyncParseString(buffer);
+
       await asyncWriteFile(join(
         dirname(metadataXml),
         basename(metadataXml, '.xml') + '.json',
       ), JSON.stringify(metadata, null, 2));
     }
 
+    // extract data
+    const extractedData = await extractData(buffer.toString());
+
+    // determine deferred type
+    const deferredType = ['JQuery.Deferred', 'Promise'].indexOf(cmd.deferred) >= 0 ? cmd.deferred : undefined;
+
     // generate and compile TypeScript interfaces
-    await asyncWriteFile(interfacesDTs, compileTypeScriptInterfaces(generateTypeScriptInterfaces(metadata)));
+    await asyncWriteFile(interfacesDTs, compileTypeScriptInterfaces(extractedData, deferredType));
   });
 
 commander
