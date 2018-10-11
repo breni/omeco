@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>odata-metadata-to-typescript-interfaces</title>
+	<title>&quot;helpers&quot; | odata-metadata-to-typescript-interfaces</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">odata-metadata-to-typescript-interfaces</a>
+					<a href="../index.html" class="title">odata-metadata-to-typescript-interfaces</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -51,10 +51,13 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_helpers_.html">&quot;helpers&quot;</a>
 				</li>
 			</ul>
-			<h1> odata-metadata-to-typescript-interfaces</h1>
+			<h1>External module &quot;helpers&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -66,44 +69,115 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>External modules</h3>
+							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-external-module"><a href="modules/_async_.html" class="tsd-kind-icon">"async"</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/_cli_.html" class="tsd-kind-icon">"cli"</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/_helpers_.html" class="tsd-kind-icon">"helpers"</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/_index_.html" class="tsd-kind-icon">"index"</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/_types_.html" class="tsd-kind-icon">"types"</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_helpers_.html#generatename" class="tsd-kind-icon">generate<wbr>Name</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_helpers_.html#translateproperty" class="tsd-kind-icon">translate<wbr>Property</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="generatename" class="tsd-anchor"></a>
+					<h3>generate<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>Name<span class="tsd-signature-symbol">(</span>thing<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.thingwithnameandnamespace.html" class="tsd-signature-type">ThingWithNameAndNamespace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/a6e7c4d/src/helpers.ts#L68">helpers.ts:68</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate name for a thing</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>thing: <a href="../interfaces/_types_.thingwithnameandnamespace.html" class="tsd-signature-type">ThingWithNameAndNamespace</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Thing to generate name for</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="translateproperty" class="tsd-anchor"></a>
+					<h3>translate<wbr>Property</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">translate<wbr>Property<span class="tsd-signature-symbol">(</span>property<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.typescriptinterfaceproperty.html" class="tsd-signature-type">TypeScriptInterfaceProperty</a>, deferredType<span class="tsd-signature-symbol">?: </span><a href="_types_.html#deferredtype" class="tsd-signature-type">DeferredType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/a6e7c4d/src/helpers.ts#L8">helpers.ts:8</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Translate an OData type to a TypeScript type</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>property: <a href="../interfaces/_types_.typescriptinterfaceproperty.html" class="tsd-signature-type">TypeScriptInterfaceProperty</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Property to translate</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> deferredType: <a href="_types_.html#deferredtype" class="tsd-signature-type">DeferredType</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals current ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_async_.html">"async"</a>
+						<a href="_async_.html">"async"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_cli_.html">"cli"</a>
+						<a href="_cli_.html">"cli"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="_helpers_.html">"helpers"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_helpers_.html">"helpers"</a>
+						<a href="_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_.html">"types"</a>
+						<a href="_types_.html">"types"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_helpers_.html#generatename" class="tsd-kind-icon">generate<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_helpers_.html#translateproperty" class="tsd-kind-icon">translate<wbr>Property</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -172,7 +246,7 @@
 	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

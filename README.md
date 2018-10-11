@@ -20,6 +20,6 @@ omtti --help
 
 ## Programatically
 
-Use the functions `generateTypeScriptInterfaces` and `compileTypeScriptInterfaces`.
+Use the functions `extractData` and `compileTypeScriptInterfaces`.
 
 [See documentation](https://krlwlfrt.github.io/odata-metadata-to-typescript-interfaces/) for description of usage.  
