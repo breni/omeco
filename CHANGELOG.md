@@ -1,3 +1,19 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.7.0...v0.8.0) (2018-10-30)
+
+
+### Bug Fixes
+
+* correctly set version of cli ([76ac539](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/76ac539))
+* output help if used incorrectly ([ee725ba](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/ee725ba))
+
+
+### Features
+
+* add possibility to sort interfaces and props ([036aae7](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/036aae7))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.6.0...v0.7.0) (2018-10-11)
 
