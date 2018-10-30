@@ -9,9 +9,11 @@ import {compileTypeScriptInterfaces, extractData} from './index';
 // read and parse package file
 const pkgJson = JSON.parse(readFileSync(join(__dirname, '..', 'package.json')).toString());
 
+// set version of cli
+commander.version(pkgJson.version);
+
 commander
   .command('convert <metadataXml> [interfacesDTs]')
-  .version(pkgJson.version)
   .description('Convert OData metadata to TypeScript interfaces')
   .option('-d, --debug', 'Write JSON representation of XML to file')
   .option('-f, --force', 'Overwrite existing TypeScript definition file')
