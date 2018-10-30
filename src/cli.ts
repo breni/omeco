@@ -73,3 +73,7 @@ commander
 
 commander
   .parse(process.argv);
+
+if (commander.args.length < 1) {
+  commander.help();
+}
