@@ -64,7 +64,8 @@ export function translateProperty(property: TypeScriptInterfaceProperty, deferre
  * Generate name for a thing
  *
  * @param thing Thing to generate name for
+ * @param separator Separator for namespace and name
  */
-export function generateName(thing: ThingWithNameAndNamespace): string {
-  return thing.namespace + '_' + thing.name;
+export function generateName(thing: ThingWithNameAndNamespace, separator: string = '_'): string {
+  return thing.namespace + separator + thing.name;
 }

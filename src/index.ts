@@ -23,12 +23,57 @@ export function compileTypeScriptInterfaces(typeScriptInterfaces: TypeScriptInte
 
     output += ' {\n';
 
-    typeScriptInterface.properties.forEach((property: any) => {
+    typeScriptInterface.properties.forEach((property) => {
       output += '  ' + property.name + ': ' + translateProperty(property, deferredType) + ';\n';
     });
 
     output += '}\n\n';
   });
+
+  return output;
+}
+
+export function compilePlantUml(typeScriptInterfaces: TypeScriptInterface[]): string {
+  let output = '@startuml\nset namespaceSeparator ::\n\n';
+
+  let extensions = '';
+
+  let associations = '';
+
+  typeScriptInterfaces.forEach((typeScriptInterface) => {
+    output += `class ${generateName(typeScriptInterface, '::')} {\n`;
+
+    if (typeof typeScriptInterface.parent !== 'undefined') {
+      extensions += `${generateName(typeScriptInterface.parent, '::')}`
+        + ` <|-- ${generateName(typeScriptInterface, '::')}\n`;
+    }
+
+    typeScriptInterface.properties.forEach((property) => {
+      if (property.namespace === 'Edm') {
+        output += `  ${property.name}:${translateProperty(property)}\n`;
+      } else {
+        output += `  #${property.name}\n`;
+
+        associations += `${generateName(typeScriptInterface, '::')}::${property.name}`
+          + ` "1" --> "${property.multiplicity}" ${generateName({
+            name: property.type,
+            namespace: property.namespace,
+          }, '::')} : ${property.name}\n`;
+      }
+    });
+
+    output += '}\n';
+  });
+
+  if (extensions.length > 0) {
+    output += `\n\n${extensions}`;
+  }
+
+  if (associations.length > 0) {
+    output += `\n\n${associations}`;
+  }
+
+  output += '\n@enduml';
 
   return output;
 }
