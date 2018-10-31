@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/xml2js": "^0.4.3",
     "commander": "^2.18.0",
+    "node-plantuml": "0.7.0",
     "ts-node": "^7.0.1",
     "xml2js": "^0.4.19"
   },
