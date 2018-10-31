@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;index&quot; | odata-metadata-to-typescript-interfaces</title>
+	<title>&quot;compile-plantuml&quot; | omeco</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">odata-metadata-to-typescript-interfaces</a>
+					<a href="../index.html" class="title">omeco</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_index_.html">&quot;index&quot;</a>
+					<a href="_compile_plantuml_.html">&quot;compile-plantuml&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;index&quot;</h1>
+			<h1>External module &quot;compile-plantuml&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,10 +71,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_index_.html#compileplantuml" class="tsd-kind-icon">compile<wbr>Plant<wbr>Uml</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_index_.html#compiletypescriptinterfaces" class="tsd-kind-icon">compile<wbr>Type<wbr>Script<wbr>Interfaces</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_index_.html#extractdata" class="tsd-kind-icon">extract<wbr>Data</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_index_.html#extractdatav2" class="tsd-kind-icon">extract<wbr>Data<wbr>V2</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_compile_plantuml_.html#compileplantuml" class="tsd-kind-icon">compile<wbr>Plant<wbr>Uml</a></li>
 							</ul>
 						</section>
 					</div>
@@ -86,121 +83,30 @@
 					<a name="compileplantuml" class="tsd-anchor"></a>
 					<h3>compile<wbr>Plant<wbr>Uml</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">compile<wbr>Plant<wbr>Uml<span class="tsd-signature-symbol">(</span>typeScriptInterfaces<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">compile<wbr>Plant<wbr>Uml<span class="tsd-signature-symbol">(</span>entities<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/index.ts#L36">index.ts:36</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>typeScriptInterfaces: <a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="compiletypescriptinterfaces" class="tsd-anchor"></a>
-					<h3>compile<wbr>Type<wbr>Script<wbr>Interfaces</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">compile<wbr>Type<wbr>Script<wbr>Interfaces<span class="tsd-signature-symbol">(</span>typeScriptInterfaces<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span>, deferredType<span class="tsd-signature-symbol">?: </span><a href="_types_.html#deferredtype" class="tsd-signature-type">DeferredType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/index.ts#L12">index.ts:12</a></li>
+									<li>Defined in compile-plantuml.ts:9</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Compile representations of TypeScript interfaces to TypeScript code</p>
+									<p>Compile entities to a PlantUML description</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>typeScriptInterfaces: <a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>entities: <a href="../interfaces/_types_.entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>List of TypeScript interfaces to compile</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> deferredType: <a href="_types_.html#deferredtype" class="tsd-signature-type">DeferredType</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Type of deferred to use</p>
+										<p>List of entities to compile</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="extractdata" class="tsd-anchor"></a>
-					<h3>extract<wbr>Data</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">extract<wbr>Data<span class="tsd-signature-symbol">(</span>metadataString<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/index.ts#L86">index.ts:86</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Generate TypeScript interfaces from OData metadata</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>metadataString: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Metadata to generate TypeScript interfaces from</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="extractdatav2" class="tsd-anchor"></a>
-					<h3>extract<wbr>Data<wbr>V2</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">extract<wbr>Data<wbr>V2<span class="tsd-signature-symbol">(</span>metadata<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/index.ts#L104">index.ts:104</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Generate TypeScript interfaces from OData metadata version 2</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>metadata: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Metadata to generate TypeScript interfaces from</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -218,11 +124,17 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_cli_.html">"cli"</a>
 					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="_compile_plantuml_.html">"compile-<wbr>plantuml"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_compile_typescript_.html">"compile-<wbr>typescript"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_extract_.html">"extract"</a>
+					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_helpers_.html">"helpers"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_types_.html">"types"</a>
@@ -232,16 +144,7 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_index_.html#compileplantuml" class="tsd-kind-icon">compile<wbr>Plant<wbr>Uml</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_index_.html#compiletypescriptinterfaces" class="tsd-kind-icon">compile<wbr>Type<wbr>Script<wbr>Interfaces</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_index_.html#extractdata" class="tsd-kind-icon">extract<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_index_.html#extractdatav2" class="tsd-kind-icon">extract<wbr>Data<wbr>V2</a>
+						<a href="_compile_plantuml_.html#compileplantuml" class="tsd-kind-icon">compile<wbr>Plant<wbr>Uml</a>
 					</li>
 				</ul>
 			</nav>

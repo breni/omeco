@@ -16,22 +16,22 @@ export interface ThingWithNameAndNamespace {
 /**
  * A structure representing a TypeScript interface
  */
-export interface TypeScriptInterface extends ThingWithNameAndNamespace {
+export interface Entity extends ThingWithNameAndNamespace {
   /**
    * Parent interface of the interface
    */
-  parent?: TypeScriptInterface;
+  parent?: Entity;
 
   /**
    * List of properties of the interface
    */
-  properties: TypeScriptInterfaceProperty[];
+  properties: Property[];
 }
 
 /**
  * A TypeScript interface property
  */
-export interface TypeScriptInterfaceProperty extends ThingWithNameAndNamespace {
+export interface Property extends ThingWithNameAndNamespace {
   /**
    * Multiplicity of the property
    */
@@ -47,5 +47,3 @@ export interface TypeScriptInterfaceProperty extends ThingWithNameAndNamespace {
    */
   type: string;
 }
-
-export type DeferredType = 'JQuery.Deferred' | 'Promise';

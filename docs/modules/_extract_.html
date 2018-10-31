@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TypeScriptInterface | odata-metadata-to-typescript-interfaces</title>
+	<title>&quot;extract&quot; | omeco</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">odata-metadata-to-typescript-interfaces</a>
+					<a href="../index.html" class="title">omeco</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,118 +54,93 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_types_.html">&quot;types&quot;</a>
-				</li>
-				<li>
-					<a href="_types_.typescriptinterface.html">TypeScriptInterface</a>
+					<a href="_extract_.html">&quot;extract&quot;</a>
 				</li>
 			</ul>
-			<h1>Interface TypeScriptInterface</h1>
+			<h1>External module &quot;extract&quot;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>A structure representing a TypeScript interface</p>
-					</div>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<a href="_types_.thingwithnameandnamespace.html" class="tsd-signature-type">ThingWithNameAndNamespace</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">TypeScriptInterface</span>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_types_.typescriptinterface.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_types_.typescriptinterface.html#namespace" class="tsd-kind-icon">namespace</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.typescriptinterface.html#parent" class="tsd-kind-icon">parent</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.typescriptinterface.html#properties" class="tsd-kind-icon">properties</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_extract_.html#extractdata" class="tsd-kind-icon">extract<wbr>Data</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_extract_.html#extractdatav2" class="tsd-kind-icon">extract<wbr>Data<wbr>V2</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_types_.thingwithnameandnamespace.html">ThingWithNameAndNamespace</a>.<a href="_types_.thingwithnameandnamespace.html#name">name</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/types.ts#L8">types.ts:8</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Name of the thing</p>
-						</div>
-					</div>
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="extractdata" class="tsd-anchor"></a>
+					<h3>extract<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">extract<wbr>Data<span class="tsd-signature-symbol">(</span>metadataString<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_.entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/krlwlfrt/omeco/blob/5fa5cad/src/extract.ts#L10">extract.ts:10</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Extract entities and their properties from OData metadata</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>metadataString: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Metadata to extract entities from</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_.entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="namespace" class="tsd-anchor"></a>
-					<h3>namespace</h3>
-					<div class="tsd-signature tsd-kind-icon">namespace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_types_.thingwithnameandnamespace.html">ThingWithNameAndNamespace</a>.<a href="_types_.thingwithnameandnamespace.html#namespace">namespace</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/types.ts#L13">types.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Namespace of the thing</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="parent" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> parent</h3>
-					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <a href="_types_.typescriptinterface.html" class="tsd-signature-type">TypeScriptInterface</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/types.ts#L23">types.ts:23</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Parent interface of the interface</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="properties" class="tsd-anchor"></a>
-					<h3>properties</h3>
-					<div class="tsd-signature tsd-kind-icon">properties<span class="tsd-signature-symbol">:</span> <a href="_types_.typescriptinterfaceproperty.html" class="tsd-signature-type">TypeScriptInterfaceProperty</a><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/blob/2ea7eab/src/types.ts#L28">types.ts:28</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>List of properties of the interface</p>
-						</div>
-					</div>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="extractdatav2" class="tsd-anchor"></a>
+					<h3>extract<wbr>Data<wbr>V2</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">extract<wbr>Data<wbr>V2<span class="tsd-signature-symbol">(</span>metadata<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/krlwlfrt/omeco/blob/5fa5cad/src/extract.ts#L28">extract.ts:28</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Extract entities from OData metadata version 2</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>metadata: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Metadata to extract entities from</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_types_.entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -176,53 +151,35 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_async_.html">"async"</a>
+						<a href="_async_.html">"async"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_cli_.html">"cli"</a>
+						<a href="_cli_.html">"cli"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_helpers_.html">"helpers"</a>
+						<a href="_compile_plantuml_.html">"compile-<wbr>plantuml"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
+						<a href="_compile_typescript_.html">"compile-<wbr>typescript"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_types_.html">"types"</a>
+						<a href="_extract_.html">"extract"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_helpers_.html">"helpers"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_types_.html">"types"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_.thingwithnameandnamespace.html" class="tsd-kind-icon">Thing<wbr>With<wbr>Name<wbr>And<wbr>Namespace</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_extract_.html#extractdata" class="tsd-kind-icon">extract<wbr>Data</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_.typescriptinterface.html" class="tsd-kind-icon">Type<wbr>Script<wbr>Interface</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_types_.typescriptinterface.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_types_.typescriptinterface.html#namespace" class="tsd-kind-icon">namespace</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.typescriptinterface.html#parent" class="tsd-kind-icon">parent</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.typescriptinterface.html#properties" class="tsd-kind-icon">properties</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_.typescriptinterfaceproperty.html" class="tsd-kind-icon">Type<wbr>Script<wbr>Interface<wbr>Property</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_types_.html#deferredtype" class="tsd-kind-icon">Deferred<wbr>Type</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_extract_.html#extractdatav2" class="tsd-kind-icon">extract<wbr>Data<wbr>V2</a>
 					</li>
 				</ul>
 			</nav>

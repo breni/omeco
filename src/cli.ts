@@ -3,86 +3,78 @@
 import * as commander from 'commander';
 import {createWriteStream, existsSync, readFileSync} from 'fs';
 import {basename, dirname, join} from 'path';
-import {asyncParseString, asyncReadFile, asyncWriteFile} from './async';
-import {compilePlantUml, compileTypeScriptInterfaces, extractData} from './index';
+import {asyncReadFile, asyncWriteFile} from './async';
+import {compilePlantUml} from './compile-plantuml';
+import {compileTypeScriptInterfaces} from './compile-typescript';
+import {extractData} from './extract';
 
 // read and parse package file
 const pkgJson = JSON.parse(readFileSync(join(__dirname, '..', 'package.json')).toString());
 
-// set version of cli
-commander.version(pkgJson.version);
+commander
+  .version(pkgJson.version) // set version of cli
+  .allowUnknownOption(false); // disallow unknown options
 
 commander
-  .command('convert <metadataXml> [interfacesDTs] [plantUml]')
-  .description('Convert OData metadata to TypeScript interfaces')
-  .option('-d, --debug', 'Write JSON representation of XML to file')
-  .option('-f, --force', 'Overwrite existing TypeScript definition file')
-  .option('-l, --deferred [type]', 'Type of deferred to use')
-  .option('-s, --sort', 'Whether or not to sort interfaces and properties')
-  .action(async (metadataXml, interfacesDTs, plantUml, cmd) => {
+  .command('convert <metadataXml> [targetDir]')
+  .description('OData metadata converter')
+  .option('-f, --force', 'Whether or not to overwrite existing files in target directory')
+  .option('-s, --sort', 'Whether or not to sort entities and properties by name')
+  .action(async (metadataXml, targetDir, cmd) => {
     // check if supplied metadata file exists
     if (!existsSync(metadataXml)) {
       throw new Error('File `' + metadataXml + '` does not exist!');
     }
 
-    // set default value for TypeScript definition file
-    if (typeof interfacesDTs === 'undefined') {
-      interfacesDTs = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.d.ts');
+    // set default value for targetDir
+    if (typeof targetDir === 'undefined') {
+      targetDir = dirname(metadataXml);
     }
 
-    // set default value for PlantUML file
-    if (typeof plantUml === 'undefined') {
-      plantUml = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.puml');
-    }
-    const plantUmlPng = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.png');
+    // set target file name
+    const targetFileName = join(targetDir, basename(metadataXml, '.xml'));
 
-    // fail if TypeScript definition file exists and force option is not set
-    if (existsSync(interfacesDTs) && !cmd.force) {
-      throw new Error('File `' + interfacesDTs + '` does exist!');
-    }
+    // check if files in target directory exist
+    [
+      '.d.ts',
+      '.puml',
+      '.png',
+    ].forEach((extension) => {
+      const existingFile = targetFileName + extension;
+      if (existsSync(existingFile) && !cmd.force) {
+        throw new Error(`File ${existingFile} does exist!`);
+      }
+    });
 
     // read metadata file
     const buffer = await asyncReadFile(metadataXml);
 
-    // write JSON representation of metadata if debug option is set
-    if (cmd.debug) {
-      // parse metadata file
-      const metadata = await asyncParseString(buffer);
-
-      await asyncWriteFile(join(
-        dirname(metadataXml),
-        basename(metadataXml, '.xml') + '.json',
-      ), JSON.stringify(metadata, null, 2));
-    }
-
     // extract data
     const extractedData = await extractData(buffer.toString());
 
+    // sort entities and properties by name
     if (cmd.sort) {
       extractedData.sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
 
-      extractedData.forEach((typeScriptInterface) => {
-        typeScriptInterface.properties.sort((a, b) => {
+      extractedData.forEach((entity) => {
+        entity.properties.sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
       });
     }
 
-    // determine deferred type
-    const deferredType = ['JQuery.Deferred', 'Promise'].indexOf(cmd.deferred) >= 0 ? cmd.deferred : undefined;
-
     // generate and compile TypeScript interfaces
-    await asyncWriteFile(interfacesDTs, compileTypeScriptInterfaces(extractedData, deferredType));
+    await asyncWriteFile(targetFileName + '.d.ts', compileTypeScriptInterfaces(extractedData));
 
     // generate and compile PlantUML description
-    await asyncWriteFile(plantUml, compilePlantUml(extractedData));
+    await asyncWriteFile(targetFileName + '.puml', compilePlantUml(extractedData));
 
     // generate PNG fromn PlantUML
     const plantuml = require('node-plantuml');
-    const gen = plantuml.generate(plantUml);
-    gen.out.pipe(createWriteStream(plantUmlPng));
+    const gen = plantuml.generate(targetFileName + '.puml');
+    gen.out.pipe(createWriteStream(targetFileName + '.png'));
   });
 
 commander

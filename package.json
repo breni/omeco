@@ -1,17 +1,17 @@
 {
-  "name": "odata-metadata-to-typescript-interfaces",
+  "name": "omeco",
   "version": "0.9.0",
-  "description": "Tool to convert OData metadata to TypeScript interfaces",
+  "description": "OData metadata converter",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces.git"
+    "url": "git+https://github.com/krlwlfrt/omeco.git"
   },
   "author": "Karl-Philipp Wulfert",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/issues"
+    "url": "https://github.com/krlwlfrt/omeco/issues"
   },
-  "homepage": "https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces#readme",
+  "homepage": "https://github.com/krlwlfrt/omeco#readme",
   "devDependencies": {
     "tslint": "^5.11.0",
     "typedoc": "^0.12.0",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@types/xml2js": "^0.4.3",
     "commander": "^2.18.0",
-    "node-plantuml": "0.7.0",
+    "node-plantuml": "^0.7.0",
     "ts-node": "^7.0.1",
     "xml2js": "^0.4.19"
   },
@@ -34,14 +34,14 @@
     "tslint": "tslint './src/**/*.ts'"
   },
   "bin": {
-    "odata-metadata-to-typescript-interfaces": "./dist/cli.js",
-    "omtti": "./dist/cli.js"
+    "omeco": "./dist/cli.js"
   },
   "main": "./dist/index.js",
   "typings": "./index.d.ts",
   "keywords": [
     "OData",
     "TypeScript",
+    "PlantUML",
     "metadata",
     "interface",
     "converter",

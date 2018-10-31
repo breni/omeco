@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>odata-metadata-to-typescript-interfaces</title>
+	<title>omeco</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">odata-metadata-to-typescript-interfaces</a>
+					<a href="index.html" class="title">omeco</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> odata-metadata-to-typescript-interfaces</h1>
+			<h1> omeco</h1>
 		</div>
 	</div>
 </header>
@@ -62,16 +62,16 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="odata-metadata-to-typescript-interfaces">odata-metadata-to-typescript-interfaces</h1>
+				<h1 id="omeco">omeco</h1>
 				<p>This tool can generate a TypeScript definition file containing interfaces that describe data which is parsed from a supplied metadata file.</p>
 				<h2 id="installed-globally">Installed globally</h2>
-				<pre><code>npm <span class="hljs-keyword">install</span> -g odata-metadata-<span class="hljs-keyword">to</span>-typescript-interfaces
+				<pre><code>npm <span class="hljs-keyword">install</span> -g omeco
 
-omtti <span class="hljs-keyword">convert</span> <span class="hljs-keyword">PATH</span>/<span class="hljs-keyword">TO</span>/METADATA.XML</code></pre><p>This will generate a file called <code>metadata.d.ts</code> in the same directory as the supplied metadata file.</p>
+omeco <span class="hljs-keyword">convert</span> <span class="hljs-keyword">PATH</span>/<span class="hljs-keyword">TO</span>/METADATA.XML</code></pre><p>This will generate several new files in the same directory as the supplied metadata file.</p>
 				<p>For further usage refer to the help section of the CLI:</p>
-				<pre><code>omtti <span class="hljs-comment">--help</span></code></pre><h2 id="programatically">Programatically</h2>
+				<pre><code>omeco <span class="hljs-comment">--help</span></code></pre><h2 id="programatically">Programatically</h2>
 				<p>Use the functions <code>extractData</code> and <code>compileTypeScriptInterfaces</code>.</p>
-				<p><a href="https://krlwlfrt.github.io/odata-metadata-to-typescript-interfaces/">See documentation</a> for description of usage.  </p>
+				<p><a href="https://krlwlfrt.github.io/omeco/">See documentation</a> for description of usage.  </p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -87,10 +87,16 @@ omtti <span class="hljs-keyword">convert</span> <span class="hljs-keyword">PATH<
 						<a href="modules/_cli_.html">"cli"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_helpers_.html">"helpers"</a>
+						<a href="modules/_compile_plantuml_.html">"compile-<wbr>plantuml"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+						<a href="modules/_compile_typescript_.html">"compile-<wbr>typescript"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_extract_.html">"extract"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_helpers_.html">"helpers"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_types_.html">"types"</a>
