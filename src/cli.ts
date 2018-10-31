@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import * as commander from 'commander';
-import {existsSync, readFileSync} from 'fs';
+import {createWriteStream, existsSync, readFileSync} from 'fs';
 import {basename, dirname, join} from 'path';
 import {asyncParseString, asyncReadFile, asyncWriteFile} from './async';
-import {compileTypeScriptInterfaces, extractData} from './index';
+import {compilePlantUml, compileTypeScriptInterfaces, extractData} from './index';
 
 // read and parse package file
 const pkgJson = JSON.parse(readFileSync(join(__dirname, '..', 'package.json')).toString());
@@ -13,13 +13,13 @@ const pkgJson = JSON.parse(readFileSync(join(__dirname, '..', 'package.json')).t
 commander.version(pkgJson.version);
 
 commander
-  .command('convert <metadataXml> [interfacesDTs]')
+  .command('convert <metadataXml> [interfacesDTs] [plantUml]')
   .description('Convert OData metadata to TypeScript interfaces')
   .option('-d, --debug', 'Write JSON representation of XML to file')
   .option('-f, --force', 'Overwrite existing TypeScript definition file')
   .option('-l, --deferred [type]', 'Type of deferred to use')
   .option('-s, --sort', 'Whether or not to sort interfaces and properties')
-  .action(async (metadataXml, interfacesDTs, cmd) => {
+  .action(async (metadataXml, interfacesDTs, plantUml, cmd) => {
     // check if supplied metadata file exists
     if (!existsSync(metadataXml)) {
       throw new Error('File `' + metadataXml + '` does not exist!');
@@ -29,6 +29,12 @@ commander
     if (typeof interfacesDTs === 'undefined') {
       interfacesDTs = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.d.ts');
     }
+
+    // set default value for PlantUML file
+    if (typeof plantUml === 'undefined') {
+      plantUml = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.puml');
+    }
+    const plantUmlPng = join(dirname(metadataXml), basename(metadataXml, '.xml') + '.png');
 
     // fail if TypeScript definition file exists and force option is not set
     if (existsSync(interfacesDTs) && !cmd.force) {
@@ -69,6 +75,14 @@ commander
 
     // generate and compile TypeScript interfaces
     await asyncWriteFile(interfacesDTs, compileTypeScriptInterfaces(extractedData, deferredType));
+
+    // generate and compile PlantUML description
+    await asyncWriteFile(plantUml, compilePlantUml(extractedData));
+
+    // generate PNG fromn PlantUML
+    const plantuml = require('node-plantuml');
+    const gen = plantuml.generate(plantUml);
+    gen.out.pipe(createWriteStream(plantUmlPng));
   });
 
 commander
