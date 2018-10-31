@@ -1,3 +1,14 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.8.0...v0.9.0) (2018-10-31)
+
+
+### Features
+
+* add new compiler for PlantUML ([4c4738e](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/4c4738e))
+* generate PNG from PlantUML ([2ea7eab](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/commit/2ea7eab))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/krlwlfrt/odata-metadata-to-typescript-interfaces/compare/v0.7.0...v0.8.0) (2018-10-30)
 
