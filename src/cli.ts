@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import * as commander from 'commander';
 import {createWriteStream, existsSync, readFileSync} from 'fs';
 import {basename, dirname, join} from 'path';

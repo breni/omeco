@@ -27,7 +27,7 @@
   "scripts": {
     "build": "npm run tslint && npm run compile && npm run doc",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "compile": "tsc",
+    "compile": "tsc && sed -i '1i#!/usr/bin/env node' dist/cli.js",
     "doc": "typedoc --includeDeclarations --excludeExternals --mode modules --out ./docs ./src && touch ./docs/.nojekyll",
     "prepareOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
