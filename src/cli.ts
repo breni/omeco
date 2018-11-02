@@ -1,8 +1,8 @@
 import * as commander from 'commander';
-import {createWriteStream, existsSync, readFileSync} from 'fs';
+import {existsSync, readFileSync} from 'fs';
 import {basename, dirname, join} from 'path';
 import {asyncReadFile, asyncWriteFile} from './async';
-import {compilePlantUml} from './compile-plantuml';
+import {compilePlantUml, writePlantUmlPng} from './compile-plantuml';
 import {compileTypeScriptInterfaces} from './compile-typescript';
 import {extractData} from './extract';
 
@@ -69,10 +69,8 @@ commander
     // generate and compile PlantUML description
     await asyncWriteFile(targetFileName + '.puml', compilePlantUml(extractedData));
 
-    // generate PNG fromn PlantUML
-    const plantuml = require('node-plantuml');
-    const gen = plantuml.generate(targetFileName + '.puml');
-    gen.out.pipe(createWriteStream(targetFileName + '.png'));
+    // generate PNG from PlantUML
+    writePlantUmlPng(`${targetFileName}.puml`, `${targetFileName}.png`);
   });
 
 commander

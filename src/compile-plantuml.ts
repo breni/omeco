@@ -1,3 +1,4 @@
+import {createWriteStream} from 'fs';
 import {generateName} from './helpers';
 import {Entity} from './types';
 
@@ -49,4 +50,16 @@ export function compilePlantUml(entities: Entity[]): string {
   output += '\n@enduml';
 
   return output;
+}
+
+/**
+ * Write class diagram file (PNG) from PlantUML file
+ *
+ * @param sourceFile Source file to read PlantUML from
+ * @param targetFile Target file to write class diagram (PNG)
+ */
+export function writePlantUmlPng(sourceFile: string, targetFile: string): void {
+  const plantuml = require('node-plantuml');
+  const gen = plantuml.generate(sourceFile);
+  gen.out.pipe(createWriteStream(targetFile));
 }
