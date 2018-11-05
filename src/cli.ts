@@ -16,7 +16,7 @@ commander
 commander
   .command('convert <metadataXml> [targetDir]')
   .description('OData metadata converter')
-  .option('-f, --force', 'Whether or not to overwrite existing files in target directory')
+  .option('-f, --force', 'Whether or not to replace existing files in target directory')
   .option('-s, --sort', 'Whether or not to sort entities and properties by name')
   .action(async (metadataXml, targetDir, cmd) => {
     // check if supplied metadata file exists
@@ -40,7 +40,7 @@ commander
     ].forEach((extension) => {
       const existingFile = targetFileName + extension;
       if (existsSync(existingFile) && !cmd.force) {
-        throw new Error(`File ${existingFile} does exist!`);
+        throw new Error(`File ${existingFile} does exist! Use option '-f' to replace existing files.`);
       }
     });
 
