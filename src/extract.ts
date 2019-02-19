@@ -56,6 +56,12 @@ export function extractDataV2(metadata: any): Entity[] {
             namespace: entityType.$.BaseType.split('.')[0],
             properties: [],
           };
+        } else {
+          const keys: string[] = [];
+          entityType.Key.PropertyRef.forEach( (propRef: any) => {
+            keys.push(propRef.$.Name);
+          });
+          entity.keys = keys;
         }
 
         if (Array.isArray(entityType.Property)) {
@@ -68,6 +74,7 @@ export function extractDataV2(metadata: any): Entity[] {
               name: property.$.Name,
               namespace: type[0],
               nullable: property.$.Nullable !== 'false',
+              sapLabel: property.$['sap:label'],
               type: type[1],
             });
           });

@@ -18,6 +18,11 @@ export interface ThingWithNameAndNamespace {
  */
 export interface Entity extends ThingWithNameAndNamespace {
   /**
+   * keys
+   */
+  keys?: string[];
+
+  /**
    * Parent interface of the interface
    */
   parent?: Entity;
@@ -43,7 +48,13 @@ export interface Property extends ThingWithNameAndNamespace {
   nullable: boolean;
 
   /**
+   * SAP internal name
+   */
+  sapLabel?: string;
+
+  /**
    * Type of the property
    */
   type: string;
+
 }
